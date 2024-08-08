@@ -33,7 +33,6 @@ describe('App Component', () => {
   it('renders App component properly', () => {
     render(<App />)
 
-    console.log(localStorage)
     // Check if "Create New Stories" text is present initially
     expect(screen.getByText(/Create New Stories/i)).toBeInTheDocument()
   })
