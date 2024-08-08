@@ -14,30 +14,44 @@ const App = () => {
       const storedTasks = JSON.parse(localTask)
       if (storedTasks) setTasks(storedTasks)
     }
-  }, [setTasks])
-  const saveNewTask = (tasks) => {
+  }, [])
+  const saveTask = (tasks) => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }
 
   const addTask = (newTask) => {
     newTask.status = 'to-do'
     setTasks([...tasks, newTask])
-    saveNewTask([...tasks, newTask])
+    saveTask([...tasks, newTask])
   }
 
   const editTask = (editedTask) => {
-    console.log(editedTask, 'editedTask')
     const updatedTasks = tasks.map((task) =>
       task.id === editedTask.id ? editedTask : task,
     )
     setTasks(updatedTasks)
-    saveNewTask(updatedTasks)
+    saveTask()
   }
 
   const deleteTask = (taskId) => {
     const updatedTasks = tasks.filter((task) => task.id !== taskId)
     setTasks(updatedTasks)
-    saveNewTask(updatedTasks)
+    saveTask(updatedTasks)
+  }
+
+  const sortList = (value) => {
+    const copyTask = [...tasks]
+    copyTask.sort(function (a, b) {
+      if (a.name < b.name) {
+        return -value
+      }
+      if (a.name > b.name) {
+        return value
+      }
+      return 0
+    })
+
+    setTasks(copyTask)
   }
 
   return (
@@ -49,7 +63,13 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<StoryBoard tasks={tasks} deleteTask={deleteTask} />}
+            element={
+              <StoryBoard
+                tasks={tasks}
+                deleteTask={deleteTask}
+                sortList={sortList}
+              />
+            }
           />
           <Route
             path="/task/:taskId"
