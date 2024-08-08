@@ -32,6 +32,7 @@ const StoryBoard = ({ tasks, deleteTask }) => {
               component={Link}
               to={`/task/${task.id}`}
               variant="outlined"
+              data-testid="view_button"
               style={{ marginTop: '10px', marginLeft: '10px' }}
             >
               View Details

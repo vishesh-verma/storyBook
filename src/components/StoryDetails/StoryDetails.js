@@ -4,10 +4,7 @@ import { Container, Typography, Button, TextField } from '@mui/material'
 
 const StoryDetails = ({ tasks, editTask }) => {
   const { taskId } = useParams()
-  console.log(taskId)
   const [task, setTask] = useState(tasks.find((task) => task.id === taskId))
-
-  console.log(task)
 
   const handleChange = (e) => {
     setTask({
