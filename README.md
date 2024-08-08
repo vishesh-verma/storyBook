@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Project Component Descriptions
 
 1. AddStory Component
-  This Component adds new stories
+   This Component adds new stories
 2. StoryBorad Component
    This Component Display All stories Boxes in main page
 3. StoryDetails Component

@@ -7,31 +7,31 @@ import StoryDetails from './components/StoryDetails/StoryDetails'
 
 const App = () => {
   const [tasks, setTasks] = useState([])
-  console.log(localStorage.getItem('tasks'), 'local')
 
   useEffect(() => {
     const localTask = localStorage.getItem('tasks')
-    console.log(localTask, 'localTask')
     if (localTask) {
       const storedTasks = JSON.parse(localTask)
       if (storedTasks) setTasks(storedTasks)
     }
   }, [setTasks])
-  console.log(tasks, 'tasks')
   const saveNewTask = (tasks) => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }
 
   const addTask = (newTask) => {
+    newTask.status = 'to-do'
     setTasks([...tasks, newTask])
     saveNewTask([...tasks, newTask])
   }
 
   const editTask = (editedTask) => {
+    console.log(editedTask, 'editedTask')
     const updatedTasks = tasks.map((task) =>
       task.id === editedTask.id ? editedTask : task,
     )
     setTasks(updatedTasks)
+    saveNewTask(updatedTasks)
   }
 
   const deleteTask = (taskId) => {

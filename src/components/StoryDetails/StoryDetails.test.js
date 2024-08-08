@@ -13,12 +13,14 @@ describe('StoryDetails Component', () => {
       name: 'Task 1',
       description: 'Description 1',
       deadline: '2024-08-08',
+      status: 'to-do',
     },
     {
       id: '2',
       name: 'Task 2',
       description: 'Description 2',
       deadline: '2024-08-09',
+      status: 'in-progress',
     },
   ]
 
@@ -43,6 +45,7 @@ describe('StoryDetails Component', () => {
     expect(screen.getByLabelText('Name')).toHaveValue('Task 1')
     expect(screen.getByLabelText('Description')).toHaveValue('Description 1')
     expect(screen.getByLabelText('Deadline')).toHaveValue('2024-08-08')
+    expect(screen.getByTestId('status')).toHaveTextContent('To Do')
   })
 
   it('handles input changes correctly', () => {
@@ -95,6 +98,10 @@ describe('StoryDetails Component', () => {
     fireEvent.change(screen.getByLabelText('Deadline'), {
       target: { value: '2024-08-10' },
     })
+    fireEvent.change(screen.getByTestId('status').querySelector('input'), {
+      target: { value: 'in-progress' },
+    })
+
     fireEvent.click(screen.getByText('Save'))
 
     expect(editTaskMock).toHaveBeenCalledWith({
@@ -102,6 +109,7 @@ describe('StoryDetails Component', () => {
       name: 'Updated Task',
       description: 'Updated Description',
       deadline: '2024-08-10',
+      status: 'in-progress',
     })
   })
 })

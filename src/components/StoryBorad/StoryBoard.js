@@ -20,7 +20,10 @@ const StoryBoard = ({ tasks, deleteTask }) => {
           >
             <Typography variant="h6">{task.name}</Typography>
             <Typography variant="body2">{task.description}</Typography>
+            <Typography variant="body2">Status: {task.status}</Typography>
+
             <Typography variant="caption">Deadline: {task.deadline}</Typography>
+
             <Button
               onClick={() => handleDelete(task.id)}
               variant="outlined"

@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Container, Typography, Button, TextField } from '@mui/material'
+import {
+  Container,
+  Typography,
+  Button,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from '@mui/material'
 
 const StoryDetails = ({ tasks, editTask }) => {
   const { taskId } = useParams()
@@ -56,6 +65,26 @@ const StoryDetails = ({ tasks, editTask }) => {
             shrink: true,
           }}
         />
+        <FormControl
+          fullWidth
+          margin="normal"
+          style={{ marginTop: '10px', marginBottom: '10px' }}
+          label="Status"
+        >
+          <InputLabel>Status</InputLabel>
+          <Select
+            name="status"
+            value={task.status || ''}
+            onChange={handleChange}
+            variant="outlined"
+            label="Status"
+            data-testid="status"
+          >
+            <MenuItem value="to-do">To Do</MenuItem>
+            <MenuItem value="in-progress">In Progress</MenuItem>
+            <MenuItem value="done">Done</MenuItem>
+          </Select>
+        </FormControl>
         <Button
           type="submit"
           variant="contained"
