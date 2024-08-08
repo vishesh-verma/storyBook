@@ -2,6 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# All the stories are save in local storage and can be seen in the root url http://localhost:3000/ or "/"
+
+## Project Component Descriptions
+
+1. AddStory Component
+  This Component adds new stories
+2. StoryBorad Component
+   This Component Display All stories Boxes in main page
+3. StoryDetails Component
+   This Component Displays Details of a single story
+
 ## Available Scripts
 
 In the project directory, you can run:
