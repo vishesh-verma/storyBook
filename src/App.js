@@ -14,7 +14,7 @@ const App = () => {
       const storedTasks = JSON.parse(localTask)
       if (storedTasks) setTasks(storedTasks)
     }
-  }, [])
+  }, [setTasks])
   const saveTask = (tasks) => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }
@@ -30,7 +30,7 @@ const App = () => {
       task.id === editedTask.id ? editedTask : task,
     )
     setTasks(updatedTasks)
-    saveTask()
+    saveTask(updatedTasks)
   }
 
   const deleteTask = (taskId) => {

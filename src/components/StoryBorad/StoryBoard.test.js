@@ -43,10 +43,10 @@ describe('StoryBoard Component', () => {
 
     expect(screen.getByText('Task 1')).toBeInTheDocument()
     expect(screen.getByText('Description 1')).toBeInTheDocument()
-    expect(screen.getByText('Deadline: 2024-08-08')).toBeInTheDocument()
+    expect(screen.getByText('2024-08-08')).toBeInTheDocument()
     expect(screen.getByText('Task 2')).toBeInTheDocument()
     expect(screen.getByText('Description 2')).toBeInTheDocument()
-    expect(screen.getByText('Deadline: 2024-08-09')).toBeInTheDocument()
+    expect(screen.getByText('2024-08-09')).toBeInTheDocument()
   })
 
   it('calls deleteTask when delete button is clicked', () => {

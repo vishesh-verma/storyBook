@@ -4,7 +4,6 @@ import React from 'react'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import AddStory from './AddStory'
-import { v4 as uuidv4 } from 'uuid'
 
 // Mock uuid to control its output
 jest.mock('uuid', () => ({
